@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_776893443c87271078a2429010470de3 {
+                    position: relative;
+                    width: 800.0px;
+                    height: 500.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_776893443c87271078a2429010470de3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_776893443c87271078a2429010470de3 = L.map(
+                "map_776893443c87271078a2429010470de3",
+                {
+                    center: [51.056843, 13.74264],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_776893443c87271078a2429010470de3);
+
+            
+
+        
+    
+            var tile_layer_b670ca816eeebb339feb2ff5b6898134 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_776893443c87271078a2429010470de3);
+        
+    
+            map_776893443c87271078a2429010470de3.fitBounds(
+                [[50.98828, 13.62462], [51.125406, 13.86066]],
+                {}
+            );
+        
+    
+        function geo_json_f1da7415869c859d1c869faa33cb9626_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_f1da7415869c859d1c869faa33cb9626_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_f1da7415869c859d1c869faa33cb9626_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 3};
+            
+            let style = geo_json_f1da7415869c859d1c869faa33cb9626_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_f1da7415869c859d1c869faa33cb9626_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_f1da7415869c859d1c869faa33cb9626.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_f1da7415869c859d1c869faa33cb9626_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_f1da7415869c859d1c869faa33cb9626 = L.geoJson(null, {
+                onEachFeature: geo_json_f1da7415869c859d1c869faa33cb9626_onEachFeature,
+            
+                style: geo_json_f1da7415869c859d1c869faa33cb9626_styler,
+                pointToLayer: geo_json_f1da7415869c859d1c869faa33cb9626_pointToLayer
+        });
+
+        function geo_json_f1da7415869c859d1c869faa33cb9626_add (data) {
+            geo_json_f1da7415869c859d1c869faa33cb9626
+                .addData(data)
+                .addTo(map_776893443c87271078a2429010470de3);
+        }
+            geo_json_f1da7415869c859d1c869faa33cb9626_add({"bbox": [13.62462, 50.98828, 13.86066, 51.125406], "features": [{"bbox": [13.766196, 51.073957, 13.766196, 51.073957], "geometry": {"coordinates": [13.766196, 51.073957], "type": "Point"}, "id": "2", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Maria Anna von Portugal", "Stra\u00dfenname": "Marienallee", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.742361, 51.062808, 13.742361, 51.062808], "geometry": {"coordinates": [13.742361, 51.062808], "type": "Point"}, "id": "5", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Maria Theresia von \u00d6sterreich", "Stra\u00dfenname": "Theresienstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.744284, 51.063634, 13.744284, 51.063634], "geometry": {"coordinates": [13.744284, 51.063634], "type": "Point"}, "id": "7", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Karoline Ferdinande von \u00d6sterreich", "Stra\u00dfenname": "Carolinenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.735355, 51.063756, 13.735355, 51.063756], "geometry": {"coordinates": [13.735355, 51.063756], "type": "Point"}, "id": "10", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Hedwig von D\u00e4nemark", "Stra\u00dfenname": "Hedwigstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.783373, 51.040901, 13.783373, 51.040901], "geometry": {"coordinates": [13.783373, 51.040901], "type": "Point"}, "id": "38", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Elfriede Lohse-W\u00e4chtler", "Stra\u00dfenname": "Elfriede-Lohse-W\u00e4chtler-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.784489, 51.040924, 13.784489, 51.040924], "geometry": {"coordinates": [13.784489, 51.040924], "type": "Point"}, "id": "39", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Etha Richter", "Stra\u00dfenname": "Etha-Richter-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.771441, 51.051481, 13.771441, 51.051481], "geometry": {"coordinates": [13.771441, 51.051481], "type": "Point"}, "id": "41", "properties": {"Gender": "weiblich", "PLZ": 1307, "Personname": "Maria Cebotari", "Stra\u00dfenname": "Maria-Cebotari-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.765397, 51.047887, 13.765397, 51.047887], "geometry": {"coordinates": [13.765397, 51.047887], "type": "Point"}, "id": "57", "properties": {"Gender": "weiblich", "PLZ": 1307, "Personname": "St\u00e9phanie de Beauharnais", "Stra\u00dfenname": "Stephanienstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.765107, 51.047178, 13.765107, 51.047178], "geometry": {"coordinates": [13.765107, 51.047178], "type": "Point"}, "id": "58", "properties": {"Gender": "weiblich", "PLZ": 1307, "Personname": "St\u00e9phanie de Beauharnais", "Stra\u00dfenname": "Stephanienplatz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.696537, 51.07048, 13.696537, 51.07048], "geometry": {"coordinates": [13.696537, 51.07048], "type": "Point"}, "id": "65", "properties": {"Gender": "weiblich", "PLZ": 1139, "Personname": "Rosalba Carriera", "Stra\u00dfenname": "Carrierastra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.685482, 51.073686, 13.685482, 51.073686], "geometry": {"coordinates": [13.685482, 51.073686], "type": "Point"}, "id": "71", "properties": {"Gender": "weiblich", "PLZ": 1139, "Personname": "Marie Curie", "Stra\u00dfenname": "Marie-Curie-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.724718, 51.07472, 13.724718, 51.07472], "geometry": {"coordinates": [13.724718, 51.07472], "type": "Point"}, "id": "102", "properties": {"Gender": "weiblich", "PLZ": 1127, "Personname": "Hedwig Langner", "Stra\u00dfenname": "Hedwig-Langner-Weg", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.7256, 51.075026, 13.7256, 51.075026], "geometry": {"coordinates": [13.7256, 51.075026], "type": "Point"}, "id": "103", "properties": {"Gender": "weiblich", "PLZ": 1127, "Personname": "Rosa Steinhart", "Stra\u00dfenname": "Rosa-Steinhart-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.724391, 51.084606, 13.724391, 51.084606], "geometry": {"coordinates": [13.724391, 51.084606], "type": "Point"}, "id": "107", "properties": {"Gender": "weiblich", "PLZ": 1129, "Personname": "Barbara von Nikomedien", "Stra\u00dfenname": "Barbarastra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.832495, 51.123681, 13.832495, 51.123681], "geometry": {"coordinates": [13.832495, 51.123681], "type": "Point"}, "id": "114", "properties": {"Gender": "weiblich", "PLZ": 1465, "Personname": "Bertha Di\u00dfmann", "Stra\u00dfenname": "Bertha-Di\u00dfmann-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.782703, 51.068474, 13.782703, 51.068474], "geometry": {"coordinates": [13.782703, 51.068474], "type": "Point"}, "id": "117", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Bettina von Arnim", "Stra\u00dfenname": "Bettinastra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75647, 51.0192, 13.75647, 51.0192], "geometry": {"coordinates": [13.75647, 51.0192], "type": "Point"}, "id": "140", "properties": {"Gender": "weiblich", "PLZ": 1217, "Personname": "Caroline Bardua", "Stra\u00dfenname": "Caroline-Bardua-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.762637, 51.081457, 13.762637, 51.081457], "geometry": {"coordinates": [13.762637, 51.081457], "type": "Point"}, "id": "143", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Charlotte B\u00fchler", "Stra\u00dfenname": "Charlotte-B\u00fchler-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.781149, 51.069776, 13.781149, 51.069776], "geometry": {"coordinates": [13.781149, 51.069776], "type": "Point"}, "id": "144", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Charlotte von Schiller", "Stra\u00dfenname": "Charlottenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.70398, 51.03833, 13.70398, 51.03833], "geometry": {"coordinates": [13.70398, 51.03833], "type": "Point"}, "id": "148", "properties": {"Gender": "weiblich", "PLZ": 1159, "Personname": "Clara Viebig", "Stra\u00dfenname": "Clara-Viebig-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.69634, 51.03788, 13.69634, 51.03788], "geometry": {"coordinates": [13.69634, 51.03788], "type": "Point"}, "id": "149", "properties": {"Gender": "weiblich", "PLZ": 1159, "Personname": "Clara Zetkin", "Stra\u00dfenname": "Clara-Zetkin-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.842552, 51.020061, 13.842552, 51.020061], "geometry": {"coordinates": [13.842552, 51.020061], "type": "Point"}, "id": "158", "properties": {"Gender": "weiblich", "PLZ": 1279, "Personname": "Constantia von Cosel", "Stra\u00dfenname": "Coselgasse", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.74703, 51.05456, 13.74703, 51.05456], "geometry": {"coordinates": [13.74703, 51.05456], "type": "Point"}, "id": "171", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Carola von Wasa-Holstein-Gottorp", "Stra\u00dfenname": "Carolabr\u00fccke", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.781325, 51.042966, 13.781325, 51.042966], "geometry": {"coordinates": [13.781325, 51.042966], "type": "Point"}, "id": "177", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Marie Stritt", "Stra\u00dfenname": "Marie-Stritt-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.744051, 51.065513, 13.744051, 51.065513], "geometry": {"coordinates": [13.744051, 51.065513], "type": "Point"}, "id": "193", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Erna Berger", "Stra\u00dfenname": "Erna-Berger-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.753354, 51.066481, 13.753354, 51.066481], "geometry": {"coordinates": [13.753354, 51.066481], "type": "Point"}, "id": "194", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Maria Luisa von Bourbon-Parma", "Stra\u00dfenname": "Louisenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.748672, 51.066395, 13.748672, 51.066395], "geometry": {"coordinates": [13.748672, 51.066395], "type": "Point"}, "id": "195", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Katharina von Mecklenburg", "Stra\u00dfenname": "Katharinenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78327, 51.06811, 13.78327, 51.06811], "geometry": {"coordinates": [13.78327, 51.06811], "type": "Point"}, "id": "220", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Angelika Kauffmann", "Stra\u00dfenname": "Angelikastra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.82048, 51.04793, 13.82048, 51.04793], "geometry": {"coordinates": [13.82048, 51.04793], "type": "Point"}, "id": "221", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Anna Elisabeth Angermann", "Stra\u00dfenname": "Anna-Angermann-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.69093, 51.099937, 13.69093, 51.099937], "geometry": {"coordinates": [13.69093, 51.099937], "type": "Point"}, "id": "222", "properties": {"Gender": "weiblich", "PLZ": 1445, "Personname": "Anne Frank", "Stra\u00dfenname": "Anne-Frank-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.73353, 51.02016, 13.73353, 51.02016], "geometry": {"coordinates": [13.73353, 51.02016], "type": "Point"}, "id": "235", "properties": {"Gender": "weiblich", "PLZ": 1217, "Personname": "Auguste Lazar", "Stra\u00dfenname": "Auguste-Lazar-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.727659, 51.048657, 13.727659, 51.048657], "geometry": {"coordinates": [13.727659, 51.048657], "type": "Point"}, "id": "245", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Anna von D\u00e4nemark (1532\u20131585)", "Stra\u00dfenname": "Annenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.737436, 51.040393, 13.737436, 51.040393], "geometry": {"coordinates": [13.737436, 51.040393], "type": "Point"}, "id": "250", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Prinzessin Sidonie von Sachsen", "Stra\u00dfenname": "Sidonienstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.740353, 51.042949, 13.740353, 51.042949], "geometry": {"coordinates": [13.740353, 51.042949], "type": "Point"}, "id": "255", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Maria Antonia Walpurgis von Bayern", "Stra\u00dfenname": "Walpurgisstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.73971, 51.04009, 13.73971, 51.04009], "geometry": {"coordinates": [13.73971, 51.04009], "type": "Point"}, "id": "258", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Mary Wigman", "Stra\u00dfenname": "Mary-Wigman-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.741124, 51.040039, 13.741124, 51.040039], "geometry": {"coordinates": [13.741124, 51.040039], "type": "Point"}, "id": "259", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Dore Hoyer", "Stra\u00dfenname": "Dore-Hoyer-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.741804, 51.038937, 13.741804, 51.038937], "geometry": {"coordinates": [13.741804, 51.038937], "type": "Point"}, "id": "260", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Gret Palucca", "Stra\u00dfenname": "Gret-Palucca-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.779899, 51.03247, 13.779899, 51.03247], "geometry": {"coordinates": [13.779899, 51.03247], "type": "Point"}, "id": "282", "properties": {"Gender": "weiblich", "PLZ": 1277, "Personname": "Eva Rosine Beil", "Stra\u00dfenname": "Beilstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.70354, 51.096141, 13.70354, 51.096141], "geometry": {"coordinates": [13.70354, 51.096141], "type": "Point"}, "id": "306", "properties": {"Gender": "weiblich", "PLZ": 1129, "Personname": "Maria Margaretha Kirch", "Stra\u00dfenname": "Maria-Kirch-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.72151, 51.094884, 13.72151, 51.094884], "geometry": {"coordinates": [13.72151, 51.094884], "type": "Point"}, "id": "316", "properties": {"Gender": "weiblich", "PLZ": 1129, "Personname": "Dorothea Christiane Erxleben", "Stra\u00dfenname": "Dorothea-Erxleben-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.784034, 51.055058, 13.784034, 51.055058], "geometry": {"coordinates": [13.784034, 51.055058], "type": "Point"}, "id": "322", "properties": {"Gender": "weiblich", "PLZ": 1307, "Personname": "Mildred Scheel", "Stra\u00dfenname": "Mildred-Scheel-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75255, 51.048989, 13.75255, 51.048989], "geometry": {"coordinates": [13.75255, 51.048989], "type": "Point"}, "id": "335", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Mathilde von Sachsen", "Stra\u00dfenname": "Mathildenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.7511, 51.021696, 13.7511, 51.021696], "geometry": {"coordinates": [13.7511, 51.021696], "type": "Point"}, "id": "352", "properties": {"Gender": "weiblich", "PLZ": 1217, "Personname": "Dora Stock", "Stra\u00dfenname": "Dora-Stock-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.79732, 50.98828, 13.79732, 50.98828], "geometry": {"coordinates": [13.79732, 50.98828], "type": "Point"}, "id": "353", "properties": {"Gender": "weiblich", "PLZ": 1257, "Personname": "Dora Zschille", "Stra\u00dfenname": "Dora-Zschille-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.66647, 51.06059, 13.66647, 51.06059], "geometry": {"coordinates": [13.66647, 51.06059], "type": "Point"}, "id": "355", "properties": {"Gender": "weiblich", "PLZ": 1157, "Personname": "Annette von Droste-H\u00fclshoff", "Stra\u00dfenname": "Droste-H\u00fclshoff-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.79271, 50.99184, 13.79271, 50.99184], "geometry": {"coordinates": [13.79271, 50.99184], "type": "Point"}, "id": "360", "properties": {"Gender": "weiblich", "PLZ": 1239, "Personname": "Elfride Tr\u00f6tschel", "Stra\u00dfenname": "Elfride-Tr\u00f6tschel-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75943, 51.08343, 13.75943, 51.08343], "geometry": {"coordinates": [13.75943, 51.08343], "type": "Point"}, "id": "361", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Elisabeth Boer", "Stra\u00dfenname": "Elisabeth-Boer-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.76552, 51.02589, 13.76552, 51.02589], "geometry": {"coordinates": [13.76552, 51.02589], "type": "Point"}, "id": "362", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Elsa Br\u00e4ndstr\u00f6m", "Stra\u00dfenname": "Elsa-Br\u00e4ndstr\u00f6m-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78892, 50.99089, 13.78892, 50.99089], "geometry": {"coordinates": [13.78892, 50.99089], "type": "Point"}, "id": "369", "properties": {"Gender": "weiblich", "PLZ": 1239, "Personname": "Erna Sack", "Stra\u00dfenname": "Erna-Sack-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78348, 51.01871, 13.78348, 51.01871], "geometry": {"coordinates": [13.78348, 51.01871], "type": "Point"}, "id": "374", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Eva Schulze-Knabe", "Stra\u00dfenname": "Eva-Schulze-Knabe-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.8597, 51.00348, 13.8597, 51.00348], "geometry": {"coordinates": [13.8597, 51.00348], "type": "Point"}, "id": "378", "properties": {"Gender": "weiblich", "PLZ": 1259, "Personname": "Fanny Lewald", "Stra\u00dfenname": "Fanny-Lewald-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.812795, 51.021702, 13.812795, 51.021702], "geometry": {"coordinates": [13.812795, 51.021702], "type": "Point"}, "id": "386", "properties": {"Gender": "weiblich", "PLZ": 1237, "Personname": "Bertha von Suttner", "Stra\u00dfenname": "Suttnerstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.70443, 51.03326, 13.70443, 51.03326], "geometry": {"coordinates": [13.70443, 51.03326], "type": "Point"}, "id": "391", "properties": {"Gender": "weiblich", "PLZ": 1187, "Personname": "Agnes Smedley", "Stra\u00dfenname": "Agnes-Smedley-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.841721, 51.038526, 13.841721, 51.038526], "geometry": {"coordinates": [13.841721, 51.038526], "type": "Point"}, "id": "392", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Agnes Hottenroth", "Stra\u00dfenname": "Agnesh\u00f6he", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.72903, 51.051467, 13.72903, 51.051467], "geometry": {"coordinates": [13.72903, 51.051467], "type": "Point"}, "id": "409", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Herta Lindner", "Stra\u00dfenname": "Hertha-Lindner-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.734444, 51.051944, 13.734444, 51.051944], "geometry": {"coordinates": [13.734444, 51.051944], "type": "Point"}, "id": "415", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Sophie von Brandenburg", "Stra\u00dfenname": "Sophienstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.783616, 51.060718, 13.783616, 51.060718], "geometry": {"coordinates": [13.783616, 51.060718], "type": "Point"}, "id": "417", "properties": {"Gender": "weiblich", "PLZ": 1307, "Personname": "K\u00e4the Kollwitz", "Stra\u00dfenname": "K\u00e4the-Kollwitz-Ufer", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.791326, 51.050248, 13.791326, 51.050248], "geometry": {"coordinates": [13.791326, 51.050248], "type": "Point"}, "id": "471", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Helene Glatzer", "Stra\u00dfenname": "Lene-Glatzer-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.788946, 51.046716, 13.788946, 51.046716], "geometry": {"coordinates": [13.788946, 51.046716], "type": "Point"}, "id": "472", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Rosa Menzer", "Stra\u00dfenname": "Rosa-Menzer-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.778157, 51.042035, 13.778157, 51.042035], "geometry": {"coordinates": [13.778157, 51.042035], "type": "Point"}, "id": "484", "properties": {"Gender": "weiblich", "PLZ": 1309, "Personname": "Marie Berset", "Stra\u00dfenname": "M\u00fcller-Berset-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.764416, 51.086093, 13.764416, 51.086093], "geometry": {"coordinates": [13.764416, 51.086093], "type": "Point"}, "id": "485", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Melitta Bentz", "Stra\u00dfenname": "Melitta-Bentz-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.705825, 51.029053, 13.705825, 51.029053], "geometry": {"coordinates": [13.705825, 51.029053], "type": "Point"}, "id": "505", "properties": {"Gender": "weiblich", "PLZ": 1187, "Personname": "Elisa von der Recke", "Stra\u00dfenname": "Reckestra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.76796, 51.0101, 13.76796, 51.0101], "geometry": {"coordinates": [13.76796, 51.0101], "type": "Point"}, "id": "519", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Ricarda Huch", "Stra\u00dfenname": "Ricarda-Huch-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.77238, 51.00889, 13.77238, 51.00889], "geometry": {"coordinates": [13.77238, 51.00889], "type": "Point"}, "id": "522", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Ingeborg Bachmann", "Stra\u00dfenname": "Ingeborg-Bachmann-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.77151, 51.00874, 13.77151, 51.00874], "geometry": {"coordinates": [13.77151, 51.00874], "type": "Point"}, "id": "523", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Marianne Bruns", "Stra\u00dfenname": "Marianne-Bruns-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.71869, 51.04117, 13.71869, 51.04117], "geometry": {"coordinates": [13.71869, 51.04117], "type": "Point"}, "id": "535", "properties": {"Gender": "weiblich", "PLZ": 1069, "Personname": "Henriette Heber", "Stra\u00dfenname": "Henriette-Heber-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.83266, 51.04991, 13.83266, 51.04991], "geometry": {"coordinates": [13.83266, 51.04991], "type": "Point"}, "id": "553", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Franziska Tiburtius", "Stra\u00dfenname": "Franziska-Tiburtius-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.79044, 51.02477, 13.79044, 51.02477], "geometry": {"coordinates": [13.79044, 51.02477], "type": "Point"}, "id": "555", "properties": {"Gender": "weiblich", "PLZ": 1237, "Personname": "Friederike Serre", "Stra\u00dfenname": "Friederike-Serre-Weg", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78077, 51.11465, 13.78077, 51.11465], "geometry": {"coordinates": [13.78077, 51.11465], "type": "Point"}, "id": "578", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "Gertrud Caspari", "Stra\u00dfenname": "Gertrud-Caspari-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.7319, 51.0608, 13.7319, 51.0608], "geometry": {"coordinates": [13.7319, 51.0608], "type": "Point"}, "id": "597", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Maria Anna von Bayern", "Stra\u00dfenname": "Marienbr\u00fccke", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.7329, 51.0488, 13.7329, 51.0488], "geometry": {"coordinates": [13.7329, 51.0488], "type": "Point"}, "id": "599", "properties": {"Gender": "weiblich", "PLZ": 1067, "Personname": "Maria Anna von Bayern", "Stra\u00dfenname": "Marienstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75291667, 51.05868056, 13.75291667, 51.05868056], "geometry": {"coordinates": [13.75291667, 51.05868056], "type": "Point"}, "id": "608", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Rosa Luxemburg", "Stra\u00dfenname": "Rosa-Luxemburg-Platz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.74633333, 51.05733333, 13.74633333, 51.05733333], "geometry": {"coordinates": [13.74633333, 51.05733333], "type": "Point"}, "id": "610", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Carola von Wasa-Holstein-Gottorp", "Stra\u00dfenname": "Carolaplatz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.752406, 51.082922, 13.752406, 51.082922], "geometry": {"coordinates": [13.752406, 51.082922], "type": "Point"}, "id": "638", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Tony Sender", "Stra\u00dfenname": "Toni-Sender-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.76702, 51.11579, 13.76702, 51.11579], "geometry": {"coordinates": [13.76702, 51.11579], "type": "Point"}, "id": "640", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "Traute Richter", "Stra\u00dfenname": "Traute-Richter-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.83843, 51.02698, 13.83843, 51.02698], "geometry": {"coordinates": [13.83843, 51.02698], "type": "Point"}, "id": "650", "properties": {"Gender": "weiblich", "PLZ": 1279, "Personname": "Friederike Caroline Neuber", "Stra\u00dfenname": "Neuberinstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.83457, 51.0189, 13.83457, 51.0189], "geometry": {"coordinates": [13.83457, 51.0189], "type": "Point"}, "id": "652", "properties": {"Gender": "weiblich", "PLZ": 1279, "Personname": "Melli Beese", "Stra\u00dfenname": "Melli-Beese-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.754468, 51.114855, 13.754468, 51.114855], "geometry": {"coordinates": [13.754468, 51.114855], "type": "Point"}, "id": "691", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "Valeria Kratina", "Stra\u00dfenname": "Valeria-Kratina-Weg", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.765323, 51.123898, 13.765323, 51.123898], "geometry": {"coordinates": [13.765323, 51.123898], "type": "Point"}, "id": "704", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "Wilhelmine Reichard", "Stra\u00dfenname": "Wilhelmine-Reichard-Ring", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78936, 51.11905, 13.78936, 51.11905], "geometry": {"coordinates": [13.78936, 51.11905], "type": "Point"}, "id": "712", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "K\u00e4the Kollwitz", "Stra\u00dfenname": "K\u00e4the-Kollwitz-Platz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.678106, 51.045352, 13.678106, 51.045352], "geometry": {"coordinates": [13.678106, 51.045352], "type": "Point"}, "id": "718", "properties": {"Gender": "weiblich", "PLZ": 1169, "Personname": "Amalie Dietrich", "Stra\u00dfenname": "Amalie-Dietrich-Platz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78196, 51.0683, 13.78196, 51.0683], "geometry": {"coordinates": [13.78196, 51.0683], "type": "Point"}, "id": "750", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Clara Schumann", "Stra\u00dfenname": "Klarastra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78469, 51.06792, 13.78469, 51.06792], "geometry": {"coordinates": [13.78469, 51.06792], "type": "Point"}, "id": "751", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Helene Judeich", "Stra\u00dfenname": "Judeichstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75162, 51.0208, 13.75162, 51.0208], "geometry": {"coordinates": [13.75162, 51.0208], "type": "Point"}, "id": "753", "properties": {"Gender": "weiblich", "PLZ": 1217, "Personname": "Louise Seidler", "Stra\u00dfenname": "Louise-Seidler-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.80772, 51.06109, 13.80772, 51.06109], "geometry": {"coordinates": [13.80772, 51.06109], "type": "Point"}, "id": "761", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Katharina Scheven", "Stra\u00dfenname": "Schevenstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.80839, 51.0632, 13.80839, 51.0632], "geometry": {"coordinates": [13.80839, 51.0632], "type": "Point"}, "id": "765", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Marie Simon", "Stra\u00dfenname": "Marie-Simon-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.65649, 51.05193, 13.65649, 51.05193], "geometry": {"coordinates": [13.65649, 51.05193], "type": "Point"}, "id": "768", "properties": {"Gender": "weiblich", "PLZ": 1157, "Personname": "Lotte Meyer", "Stra\u00dfenname": "Lotte-Meyer-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.79509, 50.99106, 13.79509, 50.99106], "geometry": {"coordinates": [13.79509, 50.99106], "type": "Point"}, "id": "795", "properties": {"Gender": "weiblich", "PLZ": 1239, "Personname": "Elisabeth von Schuch", "Stra\u00dfenname": "Liesel-von-Schuch-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.82593, 51.05691, 13.82593, 51.05691], "geometry": {"coordinates": [13.82593, 51.05691], "type": "Point"}, "id": "799", "properties": {"Gender": "weiblich", "PLZ": 1326, "Personname": "Pauline Ulrich", "Stra\u00dfenname": "Ulrichstra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.82428, 51.06349, 13.82428, 51.06349], "geometry": {"coordinates": [13.82428, 51.06349], "type": "Point"}, "id": "802", "properties": {"Gender": "weiblich", "PLZ": 1324, "Personname": "Helene Silber", "Stra\u00dfenname": "Silberweg", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.66264, 51.05122, 13.66264, 51.05122], "geometry": {"coordinates": [13.66264, 51.05122], "type": "Point"}, "id": "812", "properties": {"Gender": "weiblich", "PLZ": 1169, "Personname": "Lise Meitner", "Stra\u00dfenname": "Lise-Meitner-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.742048, 51.069595, 13.742048, 51.069595], "geometry": {"coordinates": [13.742048, 51.069595], "type": "Point"}, "id": "819", "properties": {"Gender": "weiblich", "PLZ": 1097, "Personname": "Marta Fraenkel", "Stra\u00dfenname": "Marta-Fraenkel-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.670396, 51.045212, 13.670396, 51.045212], "geometry": {"coordinates": [13.670396, 51.045212], "type": "Point"}, "id": "820", "properties": {"Gender": "weiblich", "PLZ": 1169, "Personname": "Maria Sibylla Merian", "Stra\u00dfenname": "Merianplatz", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.85813, 51.00637, 13.85813, 51.00637], "geometry": {"coordinates": [13.85813, 51.00637], "type": "Point"}, "id": "851", "properties": {"Gender": "weiblich", "PLZ": 1259, "Personname": "Therese Malten", "Stra\u00dfenname": "Therese-Malten-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.86066, 51.00453, 13.86066, 51.00453], "geometry": {"coordinates": [13.86066, 51.00453], "type": "Point"}, "id": "853", "properties": {"Gender": "weiblich", "PLZ": 1259, "Personname": "K\u00e4the Kollwitz", "Stra\u00dfenname": "K\u00e4the-Kollwitz-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.83326, 51.01908, 13.83326, 51.01908], "geometry": {"coordinates": [13.83326, 51.01908], "type": "Point"}, "id": "859", "properties": {"Gender": "weiblich", "PLZ": 1279, "Personname": "Marie Hankel", "Stra\u00dfenname": "Marie-Hankel-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.77883, 51.01307, 13.77883, 51.01307], "geometry": {"coordinates": [13.77883, 51.01307], "type": "Point"}, "id": "861", "properties": {"Gender": "weiblich", "PLZ": 1237, "Personname": "Marie Wittich", "Stra\u00dfenname": "Marie-Wittich-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.79491, 50.991591, 13.79491, 50.991591], "geometry": {"coordinates": [13.79491, 50.991591], "type": "Point"}, "id": "882", "properties": {"Gender": "weiblich", "PLZ": 1239, "Personname": "Helena Rott", "Stra\u00dfenname": "Helena-Rott-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.78897, 50.99116, 13.78897, 50.99116], "geometry": {"coordinates": [13.78897, 50.99116], "type": "Point"}, "id": "893", "properties": {"Gender": "weiblich", "PLZ": 1239, "Personname": "Inger Kar\u00e9n", "Stra\u00dfenname": "Inger-Kar\u00e9n-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.75408, 51.06374, 13.75408, 51.06374], "geometry": {"coordinates": [13.75408, 51.06374], "type": "Point"}, "id": "895", "properties": {"Gender": "weiblich", "PLZ": 1099, "Personname": "Julie Salinger", "Stra\u00dfenname": "Julie-Salinger-Weg", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.6321, 51.086, 13.6321, 51.086], "geometry": {"coordinates": [13.6321, 51.086], "type": "Point"}, "id": "910", "properties": {"Gender": "weiblich", "PLZ": 1156, "Personname": "K\u00e4the Kollwitz", "Stra\u00dfenname": "K\u00e4the-Kollwitz-Stra\u00dfe (Cossebaude)", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.62462, 51.08865, 13.62462, 51.08865], "geometry": {"coordinates": [13.62462, 51.08865], "type": "Point"}, "id": "917", "properties": {"Gender": "weiblich", "PLZ": 1156, "Personname": "Erna Berger", "Stra\u00dfenname": "Erna-Berger-Stra\u00dfe (Cossebaude)", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.784624, 51.125406, 13.784624, 51.125406], "geometry": {"coordinates": [13.784624, 51.125406], "type": "Point"}, "id": "925", "properties": {"Gender": "weiblich", "PLZ": 1109, "Personname": "Maria Reiche", "Stra\u00dfenname": "Maria-Reiche-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.762764, 51.028056, 13.762764, 51.028056], "geometry": {"coordinates": [13.762764, 51.028056], "type": "Point"}, "id": "927", "properties": {"Gender": "weiblich", "PLZ": 1219, "Personname": "Mary Krebs-Brenning", "Stra\u00dfenname": "Mary-Krebs-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}, {"bbox": [13.807531, 50.996268, 13.807531, 50.996268], "geometry": {"coordinates": [13.807531, 50.996268], "type": "Point"}, "id": "931", "properties": {"Gender": "weiblich", "PLZ": 1257, "Personname": "Maxie Wander", "Stra\u00dfenname": "Maxie-Wander-Stra\u00dfe", "__folium_color": "red"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_f1da7415869c859d1c869faa33cb9626.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["Stra\u00dfenname", "Personname", "Gender", "PLZ"];
+    let aliases = ["Stra\u00dfenname", "Personname", "Gender", "PLZ"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_f1da7415869c859d1c869faa33cb9626.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["Stra\u00dfenname", "Personname", "Gender", "PLZ"];
+    let aliases = ["Stra\u00dfenname", "Personname", "Gender", "PLZ"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+</script>
+</html>
